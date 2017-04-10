@@ -1,2 +1,3 @@
 # research-stuff
-Various things (mostly math related) that need to be tested or redone
+Various things made in my various research projects out of necessity
+
