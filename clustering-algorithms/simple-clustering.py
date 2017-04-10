@@ -1,4 +1,4 @@
-def clusters(S):
+def clustering(S):
     ''' Simple clustering algorithm for finding the mode
         of a dataset with some tolerance
     '''
