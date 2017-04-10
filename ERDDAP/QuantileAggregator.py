@@ -1,3 +1,9 @@
+import openpyxl
+import re
+
+from os import listdir
+from os.path import isdir, getctime
+
 class QuantileAggregator:
     def __init__(self, dataset_id, column, percentages=[100, 99.5, 97.5, 90, 75, 50, 25, 10, 2.5, 0.5, 0]):
         self.dataset_id = dataset_id
@@ -10,7 +16,7 @@ class QuantileAggregator:
         xl = openpyxl.Workbook()
         ws = xl.worksheets[0]
         files = list(filter(lambda x: 'xlsx' in x, listdir(self.dataset_id)))
-        files.sort(key=lambda x: getmtime('{}/{}'.format(self.dataset_id, x)))
+        files.sort(key=lambda x: getctime('{}/{}'.format(self.dataset_id, x)))
         ws.cell(row=1, column=1).value = 'Barcode'
 
         for idx, percentage in enumerate(self.percentages):
@@ -19,7 +25,7 @@ class QuantileAggregator:
         for idx, f in enumerate(files):
             data = self.gather_data('{}/{}'.format(self.dataset_id, f))
             quantiles = self.calculate_quantiles(data)
-            ws.cell(row=idx+2, column=1).value = f[:10]
+            ws.cell(row=idx+2, column=1).value = '_'.join(re.split('_', f)[:-2])
             
             for jdx, val in enumerate(quantiles):
                 ws.cell(row=idx+2, column=jdx+2).value = val
