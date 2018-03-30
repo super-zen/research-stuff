@@ -2,7 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches
 
-from matplotlib.widget import Slider
+from matplotlib.widgets import Slider
 from random import random, uniform
 from scipy import integrate
 from scipy.integrate import odeint
@@ -91,7 +91,7 @@ red_patch = mpatches.Patch(color='red', label='Party B')
 green_patch = mpatches.Patch(color='green', label='Party C')
 
 f, axarr = plt.subplots(2, 2)
-f.suptitle('mu={:.2f}, b1={:.2f}, b2={:.2f}, b3={:.2f}, o1={:.2f}, o2={:.2f}, o3={:.2f}'.format(rates[0], rates[1], rates[2], rates[3], rates[4], rates[5], rates[6]), fontsize=11, y=1.001)
+f.suptitle('$\\mu$={:.2f}, $\\beta_1$={:.2f}, $\\beta_2$={:.2f}, $\\beta_3$={:.2f}, $\\omega_1$={:.2f}, $\\omega_2$={:.2f}, $\\omega_3$={:.2f}'.format(rates[0], rates[1], rates[2], rates[3], rates[4], rates[5], rates[6]), fontsize=11, y=1.001)
 
 az, bz, cz, tz = eq(rates, y0, 0, 500, 2000)
 
