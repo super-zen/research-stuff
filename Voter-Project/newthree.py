@@ -106,6 +106,8 @@ def update(val):
 
     fig.canvas.draw_idle()
 
+plt.rcParams['figure.figsize'] = (10, 8)
+
 ##########################################
 # Begin ODE Window
 
